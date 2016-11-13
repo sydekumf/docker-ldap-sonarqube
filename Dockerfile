@@ -19,6 +19,8 @@ RUN rm -rf $SONARQUBE_HOME/lib/bundled-plugins/*.jar \
   && sed -i '/exec java.*/a\
     -Dsonar.security.realm="$SONAR_SECURITY_REALM" \
     -Dsonar.security.savePassword="$SONAR_SECURITY_SAVEPASSWORD" \
+    -Dldap.authentication="$LDAP_AUTHENTICATION" \
+    -Dldap.StartTLS="$LDAP_STARTTLS" \
     -Dldap.bindDn="$LDAP_BINDDN" \
     -Dldap.bindPassword="$LDAP_BINDPASSWORD" \
     -Dldap.url="$LDAP_URL" \
@@ -27,4 +29,4 @@ RUN rm -rf $SONARQUBE_HOME/lib/bundled-plugins/*.jar \
     -Dldap.user.realNameAttribute="$LDAP_USER_REALNAMEATTRIBUTE" \
     -Dldap.user.emailAttribute="$LDAP_USER_EMAILATTRIBUTE" \
     -Dldap.group.baseDn="$LDAP_GROUP_BASEDN" \
-    -Dldap.group.request="$LDAP_GROUP_REQUEST" \\' $SONARQUBE_HOME/bin/run.sh && cat $SONARQUBE_HOME/bin/run.sh
+    -Dldap.group.request="$LDAP_GROUP_REQUEST" \\' $SONARQUBE_HOME/bin/run.sh
